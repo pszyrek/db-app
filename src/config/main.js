@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
+import { Callendar } from 'components'
+
 import { workers } from './workers'
 
 const Table = styled.div`
@@ -87,6 +89,8 @@ const App = () => {
 
     return (
         <div>
+            <Callendar />
+
             <TableWrapper>
                 <h1>Grupa maszynistów</h1>
                 <Table>
