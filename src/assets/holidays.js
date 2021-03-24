@@ -50,5 +50,12 @@ export const holidays = [
     {
         name: 'Boże Narodzenie, drugi dzień świąt',
         data: '2021-12-26',
-    }
+    },
 ]
+
+// TEMPLATKA JAK ZMIENIC TO U GÓRY NA TO NA DOLE
+
+// export const holidays = {
+//     'YYYY-MM-DD': 'name of holiday',
+//     ...
+// }
