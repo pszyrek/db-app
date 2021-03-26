@@ -12,5 +12,4 @@ export const holidays = {
     '11-11': 'Narodowe Święto Niepodległości',
     '12-25': 'Boże Narodzenie, pierwszy dzień świąt',
     '12-26': 'Boże Narodzenie, drugi dzień świąt',
-    ...
 }
