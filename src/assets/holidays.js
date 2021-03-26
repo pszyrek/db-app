@@ -55,7 +55,19 @@ export const holidays = [
 
 // TEMPLATKA JAK ZMIENIC TO U GÓRY NA TO NA DOLE
 
-// export const holidays = {
-//     'MM-DD': 'name of holiday',
-//     ...
-// }
+export const holidays = {
+    '01-01': 'Nowy Rok',
+    '01-06': 'Święto Trzech Króli',
+    '04-04': 'Wielkanoc, pierwszy dzień świąt',
+    '04-05': 'Wielkanoc, drugi dzień świat',
+    '05-01': 'Święto Pracy',
+    '05-03': 'Święto Konstytucji 3 Maja',
+    '05-23': 'Zesłanie Ducha Świętego (Zielone Świątki)',
+    '06-03': 'Boże Ciało',
+    '07-15': 'Wniebowzięcie NMP i Święto Wojska Polskiego',
+    '11-01': 'Dzień Wszystkich Świętych',
+    '11-11': 'Narodowe Święto Niepodległości',
+    '12-25': 'Boże Narodzenie, pierwszy dzień świąt',
+    '12-26': 'Boże Narodzenie, drugi dzień świąt',
+    ...
+}
