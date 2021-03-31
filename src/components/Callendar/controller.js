@@ -1,24 +1,28 @@
 import moment from 'moment'
 
 import { holidays } from 'assets/holidays'
-import { quarters } from 'assets/quarters'
+import { quartersRange } from 'assets/quarters'
 
 export const generateCalendar = () => {
     let months = []
     for (let month = 1; month <= 12; month++) {
         const yearAgo = moment().subtract(1, 'years').format('YYYY')
-        let monthObject = { strength: 0, days: [] }
+        const thisYear = moment().format('YYYY')
+        const monthName = moment(`${month}`, 'MM').format('MMMM')
+        const monthObject = { strength: 0, days: [], name: monthName }
         for (
             let day = 1;
             day <=
             moment(
-                `${month === 12 && yearAgo}-${month}`,
+                `${month === 12 ? yearAgo : thisYear}-${month}`,
                 'YYYY-MM'
             ).daysInMonth();
             day++
         ) {
             const dayWithMonth = moment(`${month}-${day}`).format('MM-DD')
-            const date = moment(`${month === 12 && yearAgo}-${month}-${day}`)
+            const date = moment(
+                `${month === 12 ? yearAgo : thisYear}-${month}-${day}`
+            )
 
             const isHoliday =
                 !!holidays[dayWithMonth] || date.format('dddd') === 'Sunday'
@@ -36,15 +40,22 @@ export const generateCalendar = () => {
         months.push(monthObject)
     }
 
-    const quartersStrengths = quarters.reduce((acc, quarter, index) => {
-        quarter.forEach((monthIndex) => {
-            if (!acc[`quarter-${index + 1}`]) {
-                acc[`quarter-${index + 1}`] = months[monthIndex].strength
-            }
-            acc[`quarter-${index + 1}`] += months[monthIndex].strength
-        })
-        return acc
-    }, {})
+    const quarters = quartersRange.reduce((acc, quarter, index) => {
+        const quarterObject = {
+            number: index + 1,
+            range: quarter,
+            strength: 0,
+        }
 
-    return { months, quartersStrengths }
+        quarter.forEach((monthIndex) => {
+            quarterObject.strength += months[monthIndex].strength
+            months[monthIndex].quarter = quarterObject.number
+        })
+
+        acc.push(quarterObject)
+
+        return acc
+    }, [])
+
+    return { months, quarters }
 }

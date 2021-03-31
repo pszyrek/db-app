@@ -5,7 +5,7 @@ export const quartersObject = {
     '09-01': { end: '11-30' },
 }
 
-export const quarters = [
+export const quartersRange = [
     [11, 0, 1],
     [2, 3, 4],
     [5, 6, 7],
